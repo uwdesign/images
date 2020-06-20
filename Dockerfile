@@ -93,7 +93,6 @@ RUN mkdir -p -m 700 /var/lib/nginx \
     && cp /var/www/imagesweserv/ngx_conf/*.conf /etc/nginx
 
 EXPOSE 80
-/etc/nginx/nginx.conf
 STOPSIGNAL SIGTERM
 
 CMD /bin/bash -c "envsubst '\$PORT' < /var/www/imagesweserv/ngx_conf/imagesweserv.conf.template > /etc/nginx/imagesweserv.conf" && nginx -g 'daemon off;'
