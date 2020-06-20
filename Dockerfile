@@ -96,4 +96,4 @@ EXPOSE 80
 /etc/nginx/nginx.conf
 STOPSIGNAL SIGTERM
 
-CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/imagesweserv.conf.template > /etc/nginx/imagesweserv.conf.template" && nginx -g 'daemon off;'
+CMD /bin/bash -c "envsubst '\$PORT' < /var/www/imagesweserv/ngx_conf/imagesweserv.conf.template > /etc/nginx/imagesweserv.conf" && nginx -g 'daemon off;'
