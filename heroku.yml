@@ -1,5 +1,3 @@
 build:
   docker:
-    imagesweserv: Dockerfile
-run:
-  imagesweserv: bash
+    web: Dockerfile
