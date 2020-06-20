@@ -52,7 +52,7 @@ RUN groupadd nginx \
     && useradd -r -g nginx -s /sbin/nologin -c "Nginx web server" nginx
 
 # Clone the repository
-RUN git clone --depth=1 --recurse-submodules --shallow-submodules https://github.com/weserv/images.git /var/www/imagesweserv
+RUN git clone --depth=1 --recurse-submodules --shallow-submodules https://github.com/uwdesign/images.git /var/www/imagesweserv
 
 WORKDIR /var/www/imagesweserv/build
 
@@ -93,7 +93,7 @@ RUN mkdir -p -m 700 /var/lib/nginx \
     && cp /var/www/imagesweserv/ngx_conf/*.conf /etc/nginx
 
 EXPOSE 80
-
+/etc/nginx/nginx.conf
 STOPSIGNAL SIGTERM
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/imagesweserv.conf.template > /etc/nginx/imagesweserv.conf.template" && nginx -g 'daemon off;'
