@@ -84,7 +84,11 @@ WORKDIR /var/www/imagesweserv
 RUN mkdir -p -m 700 /var/lib/nginx \
     && mkdir -p -m 700 /var/lib/nginx/tmp \
     && mkdir -p -m 700 /var/log/nginx \
-    && mkdir -p -m 755 /usr/share/nginx/html \
+    && mkdir -p -m 755 /var/lib/nginx/cache \
+    && mkdir -p -m 755 /var/lib/nginx/cache/proxy_temp \
+    && mkdir -p -m 755 /var/lib/nginx/cache/client_body_temp \
+    && mkdir -p -m 755 /var/lib/nginx/cache/proxy_cache \
+    && mkdir -p -m 755 /uca/share/nginx/html \
     && mkdir -p -m 755 /usr/lib64/nginx/modules \
     # Forward request and error logs to docker log collector
     && ln -sf /dev/stdout /var/log/nginx/weserv-access.log \
